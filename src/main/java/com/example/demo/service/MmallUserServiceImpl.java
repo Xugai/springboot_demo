@@ -3,9 +3,9 @@ package com.example.demo.service;
 import com.example.demo.mapper.MmallUserMapper;
 import com.example.demo.pojo.MmallUser;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import tk.mybatis.mapper.entity.Example;
 
 import java.util.List;
 
@@ -42,11 +42,13 @@ public class MmallUserServiceImpl implements MmallUserService {
     public List<MmallUser> queryUserByList(MmallUser user, Integer pageNum, Integer pageSize) {
 //        return mmallUserMapper
         PageHelper.startPage(pageNum, pageSize);
-        Example example = new Example(MmallUser.class);
-        Example.Criteria criteria = example.createCriteria();
-
-        List<MmallUser> mmallUserList = mmallUserMapper.selectByExample(example);
-
+//        Example example = new Example(MmallUser.class);
+//        Example.Criteria criteria = example.createCriteria();
+//
+//        List<MmallUser> mmallUserList = mmallUserMapper.selectByExample(example);
+        List<MmallUser> mmallUserList = mmallUserMapper.queryUserList();
+        PageInfo pageInfo = new PageInfo(mmallUserList);
+        pageInfo.setList(mmallUserList);
         return mmallUserList;
     }
 }

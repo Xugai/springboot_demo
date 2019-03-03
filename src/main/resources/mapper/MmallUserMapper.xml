@@ -17,6 +17,10 @@
     <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
   </resultMap>
 
+  <sql id="Base_Column_list">
+    id, username, password, email, phone, question, answer, role, create_time, update_time
+  </sql>
+  
   <insert id="addUser" parameterType="com.example.demo.pojo.MmallUser">
     insert into mmall_user (id, username, password, email, phone, question, answer,
       role, create_time, update_time) values (
@@ -26,6 +30,13 @@
       now()
       )
   </insert>
+
+  <select id="queryUserList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_list" />
+    from mmall_user
+    order by id asc
+  </select>
 
 
 </mapper>

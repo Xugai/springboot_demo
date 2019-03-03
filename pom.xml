@@ -115,6 +115,13 @@
 			 		<!--如果想要使用devtools,需要重新引入依赖&ndash;&gt;-->
 			<!--<optional>true</optional>-->
 		<!--</dependency>-->
+
+		<!-- 引入redis的依赖 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
 	</dependencies>
 
 	<build>
